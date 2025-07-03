@@ -2,3 +2,4 @@
 *.lcfg
 LxGen/
 src/__pycache__/
+src/LxGenBoards/__pycache__/

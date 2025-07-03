@@ -7,3 +7,4 @@ if __name__ == "__main__":
         sys.exit(1)
         
     lg = LxGen.LxGen(sys.argv[1])
+    lg.generate()
