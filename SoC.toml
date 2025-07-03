@@ -1,0 +1,28 @@
+board = "sipeed_tang_primer_20k"
+project = "test"
+
+interfaces = [
+    {
+        type = "clk",
+        name = "clk27",
+        io   = "LVCMOS33",
+        pins = { clk27 = "H11"}
+    },
+    {
+        type = "uart",
+        name = "serial0",
+        io   = "LVCMOS33",
+        pins = { rx = "A11", tx = "B11" }
+    },
+    {
+        type = "spi",
+        name = "spi0",
+        io   = "LVCMOS33",
+        pins = { 
+            cs_n = "P8",
+            clk  = "T8",
+            mosi = "F9",
+            miso = "T9"
+        }
+    }
+]
