@@ -1,3 +1,4 @@
 *.io
 *.lcfg
-LxGen
+LxGen/
+src/__pycache__/
