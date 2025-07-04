@@ -1,6 +1,6 @@
 import toml
 
-from src.LxGenInterfaces import LxGenUART, LxGenSPI, LxGenClk
+from src.LxGenInterfaces import LxGenGPIO, LxGenUART, LxGenSPI, LxGenClk
 
 class LxGen:
     # Supported boards
@@ -22,7 +22,6 @@ class LxGen:
             
             if self.FPGA_name not in self.supported_boards:
                 raise ValueError(f"Unsupported board: {self.FPGA_name}. Supported boards are: {', '.join(self.supported_boards)}")
-            print(f"Board Name: {self.FPGA_name}")
             
             self.__load_board()
             self.__load_interfaces()
@@ -42,6 +41,13 @@ class LxGen:
         for interface in self.interfaces:
             #print(f"Interface Type: {interface.get('type')}, Name: {interface.get('name')}, IO: {interface.get('io')}, Pins: {interface.get('pins')}") 
             match interface.get('type'):
+                case 'gpio':
+                    self.interfaces_list.append(LxGenGPIO(
+                        name=interface['name'],
+                        io=interface['io'],
+                        pins=interface['pins'],
+                        mode=interface.get('mode', 'InOut')
+                    ))
                 case 'uart':
                     self.interfaces_list.append(LxGenUART(
                         name=interface['name'],

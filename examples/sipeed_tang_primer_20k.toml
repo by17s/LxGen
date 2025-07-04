@@ -1,6 +1,9 @@
 board = "sipeed_tang_primer_20k"
 project = "test"
 
+cpu = "vexriscv"
+sram_size = 4096
+
 interfaces = [
     {
         type = "clk",
@@ -24,5 +27,12 @@ interfaces = [
             mosi = "F9",
             miso = "T9"
         }
+    },
+    {
+        type = "gpio",
+        name = "gpio0",
+        io   = "LVCMOS33",
+        pins = "D11",
+        mode = "InOut"
     }
 ]

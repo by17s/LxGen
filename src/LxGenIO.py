@@ -8,8 +8,8 @@ class LxGenIO:
     def gen_record(self):
         if len(self.pins) == 0:
             raise ValueError("[LxGenIO] Pins cannot be empty.")
-        elif len(self.pins) == 1:
-            return f'\t("{self.name}",  0, Pins("{self.pins[self.name]}"), IOStandard("{self.io}")),\n'
+        elif isinstance(self.pins, str):
+            return f'\t("{self.name}", 0, Pins("{self.pins}"), IOStandard("{self.io}")),\n'
         else:
             d = f'\t("{self.name}", 0,\n'
             for pin in self.pins:

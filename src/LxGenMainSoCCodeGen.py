@@ -14,6 +14,8 @@ class LxGenMainSoCCodeGen:
 
     def __init_interface(self):
         match self.iname:
+            case "gpio":
+                return f'self.submodules.{self.name} = GPIO{self.adddata["mode"]}(self.platform.request("{self.name}", 0))\n'
             case "uart":
                 return f'self.add_uart("{self.name}", uart_pads=platform.request("{self.name}", 0))\n'
             case "spi":
